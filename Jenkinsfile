@@ -12,7 +12,7 @@ node {
   
   stage ('Build and push docker image') {
   
-       def customImage = docker.build 'angelodias/bluegreen:blue'
+    def customImage = docker.build 'angelodias/bluegreen:${env.BRANCH}'
        docker.withRegistry('https://registry-1.docker.io/v2/','dockerhub') {
           customImage.push()
           
