@@ -6,6 +6,15 @@ node {
       
   }
   
+  stage ('list pods from kube-system') {
+     withAWS(credentials: 'aws-static',
+             region: 'us-west-2') {
+        sh '''
+           kubectl -n kube-system get-pods
+           '''
+     }
+  }
+  
   stage ('Lint HTML') {
     sh 'tidy -q -e app/*.html'
   }
