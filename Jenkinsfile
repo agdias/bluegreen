@@ -10,7 +10,7 @@ node {
      withAWS(credentials: 'aws-static',
              region: 'us-west-2') {
         sh '''
-           kubectl -n kube-system get-pods
+          kubectl config use-context  arn:aws:eks:us-west-2:123116826447:cluster/bluegreen
            '''
      }
   }
