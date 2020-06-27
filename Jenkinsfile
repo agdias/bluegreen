@@ -11,7 +11,7 @@ node {
   }
   
   stage ('test kubernetes access') {
-    withKubeConfig([credentialsId: 'k8s-token', 
+    withKubeConfig([credentialsId: 'kubeconfig', 
                     serverUrl: 'http://apiserver.hallo.io:6443',
                     namespace: 'kube-system'
                    ]) {
