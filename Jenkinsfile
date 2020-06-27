@@ -14,6 +14,7 @@ node {
     withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'http://apiserver.hallo.io']) {
       sh 'kubectl config view'
     }
+  }
   
   stage ('Build and push docker image') {
   
