@@ -7,12 +7,9 @@ node {
   }
   
   stage ('list pods from kube-system') {
-     withAWS(credentials: 'aws-static',
-             region: 'us-west-2') {
-        sh '''
-         kubectl config view
-           '''
-     }
+    withKubeConfig([credentialsId: 'kubeconfig' serverUrl: 'https://BA1F851E46F910C2BBF1ABB9CFCB20EE.gr7.us-west-2.eks.amazonaws.com']) {
+     sh 'kubectl -n kube-system get pods'
+    }
   }
   
   stage ('Lint HTML') {
