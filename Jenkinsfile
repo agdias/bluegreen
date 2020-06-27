@@ -10,7 +10,7 @@ node {
      withAWS(credentials: 'aws-static',
              region: 'us-west-2') {
         sh '''
-          aws iam get-user
+         kubectl -n kube-system get configmaps
            '''
      }
   }
