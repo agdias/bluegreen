@@ -10,6 +10,11 @@ node {
     sh 'tidy -q -e app/*.html'
   }
   
+  stage ('test kubernetes access') {
+    withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'http://apiserver.hallo.io']) {
+      sh 'kubectl config view'
+    }
+  
   stage ('Build and push docker image') {
   
        def customImage = docker.build 'angelodias/bluegreen:blue'
