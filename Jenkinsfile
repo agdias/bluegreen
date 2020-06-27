@@ -11,7 +11,7 @@ node {
   }
   
   stage ('test kubernetes access') {
-    withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'http://apiserver.hallo.io']) {
+    withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'http://apiserver.hallo.io:6443']) {
       sh 'kubectl get pods -n kube-system'
     }
   }
