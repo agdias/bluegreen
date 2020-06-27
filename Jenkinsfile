@@ -12,7 +12,7 @@ node {
   
   stage ('test kubernetes access') {
     withKubeConfig([credentialsId: 'k8s-token', serverUrl: 'http://apiserver.hallo.io:6443']) {
-      sh 'kubectl get pods -n kube-system'
+      sh 'kubectl apply -f blue.yaml'
     }
   }
   
